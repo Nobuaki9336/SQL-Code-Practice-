@@ -98,3 +98,99 @@ SELECT
 	salary
 FROM employees
 WHERE salary BETWEEN 35000 AND 50000
+
+--===========================================================
+
+-- ORDER BY, LIMIT, DISTINCT, Renaming columns
+
+-- Order by salary ascending 
+SELECT
+	employee_id,
+	first_name,
+	last_name,
+	salary
+FROM employees
+ORDER BY salary;
+
+-- Order by salary descending 
+SELECT
+	employee_id,
+	first_name,
+	last_name,
+	salary
+FROM employees
+ORDER BY salary DESC;
+
+-- Top 10 highest paid employees
+SELECT
+	employee_id,
+	first_name,
+	last_name,
+	salary
+FROM employees
+ORDER BY salary DESC
+LIMIT 10;
+
+-- Return all unique coffeeshop ids
+SELECT DISTINCT coffeeshop_id
+FROM employees;
+
+-- Return all unique countries
+SELECT DISTINCT country
+FROM locations;
+
+-- Renaming columns
+SELECT
+	email,
+	email AS email_address, 
+	hire_date,
+  hire_date AS date_joined,
+	salary,
+  salary AS pay
+FROM employees;
+
+--=========================================================
+
+-- EXTRACT
+
+SELECT
+	hire_date as date,
+	EXTRACT(YEAR FROM hire_date) AS year,
+	EXTRACT(MONTH FROM hire_date) AS month,
+	EXTRACT(DAY FROM hire_date) AS day
+FROM employees;
+
+--=========================================================
+
+-- UPPER, LOWER, LENGTH, TRIM
+
+-- Uppercase first and last names
+SELECT
+	first_name,
+	UPPER(first_name) AS first_name_upper,
+	last_name,
+	UPPER(last_name) AS last_name_upper
+FROM employees;
+
+-- Lowercase first and last names
+SELECT
+	first_name,
+	LOWER(first_name) AS first_name_upper,
+	last_name,
+	LOWER(last_name) AS last_name_upper
+FROM employees;
+
+-- Return the email and the length of emails
+SELECT
+	email,
+	LENGTH(email) AS email_length
+FROM employees;
+
+-- TRIM
+SELECT
+    LENGTH('     HELLO     ') AS hello_with_spaces,
+LENGTH('HELLO') AS hello_no_spaces,
+    LENGTH(TRIM('     HELLO     ')) AS hello_trimmed;
+
+--=========================================================
+
